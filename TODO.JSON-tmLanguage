@@ -1,0 +1,76 @@
+{
+    "name": "To Do lists",
+    "scopeName": "source.todolist",
+    "fileTypes": ["todo"],
+    "uuid": "3bca375a-ac87-4b15-88ea-eb6cc05de48e",
+
+    // keyword, comment, invalid, entity.name.function, storage.class.type
+
+    "patterns": [
+
+        {   // unstarted
+            "name": "text.todo",
+            "match": "(^\\s*\\[ \\])"
+        },
+
+        {   // unstarted
+            "name": "keyword.blocked.todo",
+            "match": "(^\\s*\\[o\\])"
+        },
+
+        {   // in progress
+            "name": "string.constant.todo",
+            "match": "(^\\s*\\[\\.\\])"
+        },
+
+        {   // done
+            "name": "entity.name.function.todo",
+            "match": "(^\\s*\\[x\\])"
+        },
+
+        {   // cancelled
+            "match": "^\\s*\\[-\\].*",
+            "name": "comment.message.todo"
+        },
+
+        {   // unable to work because of research
+            "name": "support.function.todo",
+            "match": "(^\\s*\\[~\\])"
+        },
+
+        {   // comment before cl internal tag / personal
+            "match": ".*(?=(\\((cl|personal)\\)|\\[(cl|personal)\\]))",
+            "name": "comment.message.todo"
+        },
+
+        {   // tags
+            "match": "(\\(cl\\)|\\[cl\\])",
+            "name": "support.function.todo"
+        },
+
+        {   // tags
+            "match": "(\\((\\w|[-])+\\)|\\[(\\w|[-])+\\])",
+            "name": "string"
+        },
+
+        {   // headers
+            "name": "comment.header.todo",
+            "begin": "^---",
+            "end": "$",
+            "patterns": [
+                {
+                    "name": "comment.block.header.todo",
+                    "match": "-",
+                    "patterns": []
+                },
+                {
+                    "name": "numeric.constant.date.todo",
+                    "match": "[0-9]",
+                    "patterns": []
+                }
+            ]
+        }
+    ],
+    "repository": {
+    }
+}

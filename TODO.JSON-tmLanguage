@@ -157,6 +157,21 @@
             "name": "string"
         },
 
+        {   // **DONE**
+            "match": "\\*\\*DONE\\*\\*",
+            "name": "string"
+        },
+
+        {   // **IN PROG**
+            "match": "\\*\\*IN PROG\\*\\*",
+            "name": "constant.numeric"
+        },
+
+        {   // **NEXT**
+            "match": "\\*\\*NEXT\\*\\*",
+            "name": "storage.type"
+        },
+
         {   // links
             "match": "http(s)?://[^\\s]+",
             "name": "string"

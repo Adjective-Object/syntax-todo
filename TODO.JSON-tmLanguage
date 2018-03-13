@@ -74,6 +74,13 @@
             "name": "string"
         },
 
+
+        {   // comments
+            "match": "(#|//).*$",
+            "name": "comment"
+        },
+
+
         {   // headers
             "name": "comment",
             "begin": "^---",
@@ -116,22 +123,45 @@
         }
 
         ,   {   // snippets
+            "name": "markdown",
+            "begin": "^```(md|markdown)",
+            "end": "^(```)",
+            "patterns": [
+                {"begin": "^(?=#+)", "end": "$", "name": "source.markdowncustom",
+                    "patterns": [
+                        {"match": "#+", "name": "support.function"},
+                        {"match": "[^\\s]+", "name": "keyword"}
+                    ]
+                },
+                {"match": "^(\\s)*[*-](?!-)", "name": "support.function"}
+            ]
+        }
+
+
+        ,   {   // snippets
             "name": "bash",
             "begin": "^```(sh|bash)",
             "end": "^```",
             "patterns": [
                 {"include": "source.shell"}
             ]
-        }
-        // {   // diffs
-        //     "match": "D\\d+",
-        //     "name": "string"
-        // },
+        },
 
-        // {   // tasks
-        //     "match": "T\\d+",
-        //     "name": "string"
-        // }
+        {   // diffs
+            "match": "D\\d+",
+            "name": "string"
+        },
+
+        {   // tasks
+            "match": "T\\d+",
+            "name": "string"
+        },
+
+        {   // links
+            "match": "http(s)?://[^\\s]+",
+            "name": "string"
+        }
+
 
     ],
     "repository": {

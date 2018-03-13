@@ -89,6 +89,12 @@
 			<string>string</string>
 		</dict>
 		<dict>
+			<key>match</key>
+			<string>(#|//).*$</string>
+			<key>name</key>
+			<string>comment</string>
+		</dict>
+		<dict>
 			<key>begin</key>
 			<string>^---</string>
 			<key>end</key>
@@ -156,6 +162,46 @@
 		</dict>
 		<dict>
 			<key>begin</key>
+			<string>^```(md|markdown)</string>
+			<key>end</key>
+			<string>^(```)</string>
+			<key>name</key>
+			<string>markdown</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>^(?=#+)</string>
+					<key>end</key>
+					<string>$</string>
+					<key>name</key>
+					<string>source.markdowncustom</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>#+</string>
+							<key>name</key>
+							<string>support.function</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s]+</string>
+							<key>name</key>
+							<string>keyword</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>^(\s)*[*-](?!-)</string>
+					<key>name</key>
+					<string>support.function</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
 			<string>^```(sh|bash)</string>
 			<key>end</key>
 			<string>^```</string>
@@ -168,6 +214,24 @@
 					<string>source.shell</string>
 				</dict>
 			</array>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>D\d+</string>
+			<key>name</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>T\d+</string>
+			<key>name</key>
+			<string>string</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>http(s)?://[^\s]+</string>
+			<key>name</key>
+			<string>string</string>
 		</dict>
 	</array>
 	<key>repository</key>
